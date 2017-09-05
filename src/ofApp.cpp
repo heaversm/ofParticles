@@ -3,8 +3,15 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofSetVerticalSync(true);
+    
+    gui.setup();
+    
+    numParticles.addListener(this, &ofApp::numParticlesChanged);
+
+    gui.add(numParticles.setup("particles", 300, 10, 1500)); //MH initial, min, max
 	
-	int num = 300;
+	//int num = 300;
+    int num = numParticles;
 	p.assign(num, demoParticle());
 	currentMode = PARTICLE_MODE_ATTRACT;
 
@@ -12,6 +19,13 @@ void ofApp::setup(){
 
 	resetParticles();
 }
+
+
+void ofApp::numParticlesChanged(int &numParticles){
+    //p.size(numParticles);
+    p.assign(numParticles,demoParticle());
+}
+
 
 //--------------------------------------------------------------
 void ofApp::resetParticles(){
@@ -65,6 +79,9 @@ void ofApp::draw(){
 
 	ofSetColor(230);	
 	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode.", 10, 20);
+    
+    gui.draw();
+    
 }
 
 //--------------------------------------------------------------

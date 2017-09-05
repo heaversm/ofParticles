@@ -61,23 +61,32 @@ void demoParticle::update(){
 		
 		vel *= drag; 
 		if( dist < 150 ){
+            
+            //MH PUSH AWAY
+            
 			vel += -frc * 0.6; //notice the frc is negative 
 		}
         else if (dist > 250 && dist < 350){
+            
+            //MH SLOW VELOCITY
+            
 			//if the particles are not close to us, lets add a little bit of random movement using noise. this is where uniqueVal comes in handy. 			
 			frc.x = ofSignedNoise(uniqueVal, pos.y * 0.01, ofGetElapsedTimef()*0.2);
 			frc.y = ofSignedNoise(uniqueVal, pos.x * 0.01, ofGetElapsedTimef()*0.2);
 			
-            //KEEPS POINTS OUTSIDE CIRCLE INCREASING IN VELOCITY
+            //MH KEEPS POINTS OUTSIDE CIRCLE INCREASING IN VELOCITY
             //vel += frc * 0.04;
             
-            //SLOWS PARTICLES
+            //MH SLOWS PARTICLES
             //frc.x = 0.01;
             //frc.y = 0.01;
             vel -= frc * 0.04;
             
 		}
         else if (dist >= 350){
+            
+            //MH ATTRACT BACK IN
+            
             ofPoint attractPt(ofGetMouseX(), ofGetMouseY());
             frc = attractPt-pos; // we get the attraction force/vector by looking at the mouse pos relative to our pos
             frc.normalize(); //by normalizing we disregard how close the particle is to the attraction point

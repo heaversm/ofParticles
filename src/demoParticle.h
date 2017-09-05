@@ -30,5 +30,7 @@ class demoParticle{
 		
 		particleMode mode;
 		
-		vector <ofPoint> * attractPoints; 
+		vector <ofPoint> * attractPoints;
+    
+    
 };

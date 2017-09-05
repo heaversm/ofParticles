@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "demoParticle.h"
+#include "ofxGui.h"
+
 
 class ofApp : public ofBaseApp{
 
@@ -29,5 +31,11 @@ class ofApp : public ofBaseApp{
 		vector <demoParticle> p;
 		vector <ofPoint> attractPoints;
 		vector <ofPoint> attractPointsWithMovement;
+    
+        void numParticlesChanged(int & numParticles);
+    
+        //ofxFloatSlider radiusInner;
+        ofxIntSlider numParticles;
+        ofxPanel gui;
 		
 };
