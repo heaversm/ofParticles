@@ -35,6 +35,7 @@ class ofApp : public ofBaseApp{
         void numParticlesChanged(int & numParticles);
     
         //ofxFloatSlider radiusInner;
+        bool updating;
         ofxIntSlider numParticles;
         ofxPanel gui;
 		

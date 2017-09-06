@@ -22,8 +22,24 @@ void ofApp::setup(){
 
 
 void ofApp::numParticlesChanged(int &numParticles){
-    //p.size(numParticles);
-    p.assign(numParticles,demoParticle());
+    
+    updating = true;
+    
+    int curParticles = p.size();
+    int particleDiff = curParticles - numParticles;
+    
+    if (particleDiff > 0){ //remove particles
+        for(unsigned int i = 0; i < particleDiff; i++){
+            p.pop_back();
+        }
+    } else if (particleDiff < 0){ //add particles
+        for(unsigned int i = curParticles; i < numParticles; i++){
+            p.push_back(demoParticle());
+        }
+        resetParticles();
+    }
+    
+    updating = false;
 }
 
 
@@ -61,27 +77,31 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackgroundGradient(ofColor(60,60,60), ofColor(10,10,10));
-
-	for(unsigned int i = 0; i < p.size(); i++){
-		p[i].draw();
-	}
-	
-	ofSetColor(190);
-	if( currentMode == PARTICLE_MODE_NEAREST_POINTS ){
-		for(unsigned int i = 0; i < attractPoints.size(); i++){
-			ofNoFill();
-			ofDrawCircle(attractPointsWithMovement[i], 10);
-			ofFill();
-			ofDrawCircle(attractPointsWithMovement[i], 4);
-		}
-	}
-
-	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode.", 10, 20);
     
-    gui.draw();
-    
+    if (!updating){
+        //ofBackgroundGradient(ofColor(60,60,60), ofColor(10,10,10));
+        ofBackground(ofColor(0,0,0));
+        
+        for(unsigned int i = 0; i < p.size(); i++){
+            p[i].draw();
+        }
+        
+        ofSetColor(190);
+        if( currentMode == PARTICLE_MODE_NEAREST_POINTS ){
+            for(unsigned int i = 0; i < attractPoints.size(); i++){
+                ofNoFill();
+                ofDrawCircle(attractPointsWithMovement[i], 10);
+                ofFill();
+                ofDrawCircle(attractPointsWithMovement[i], 4);
+            }
+        }
+        
+        ofSetColor(230);	
+        //ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode.", 10, 20);
+        
+        gui.draw();
+
+    }
 }
 
 //--------------------------------------------------------------
