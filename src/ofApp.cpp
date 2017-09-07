@@ -7,8 +7,10 @@ void ofApp::setup(){
     gui.setup();
     
     numParticles.addListener(this, &ofApp::numParticlesChanged);
+    repelRadius.addListener(this, &ofApp::repelRadiusChanged);
 
     gui.add(numParticles.setup("particles", 300, 10, 1500)); //MH initial, min, max
+    gui.add(repelRadius.setup("repel radius", 150, 0, 350)); //MH initial, min, max
 	
 	//int num = 300;
     int num = numParticles;
@@ -20,6 +22,7 @@ void ofApp::setup(){
 	resetParticles();
 }
 
+//--------------------------------------------------------------
 
 void ofApp::numParticlesChanged(int &numParticles){
     
@@ -37,6 +40,19 @@ void ofApp::numParticlesChanged(int &numParticles){
             p.push_back(demoParticle());
         }
         resetParticles();
+    }
+    
+    updating = false;
+}
+
+//--------------------------------------------------------------
+
+void ofApp::repelRadiusChanged(int &repelRadius){
+    
+    updating = true;
+    
+    for(unsigned int i = 0; i < p.size(); i++){
+        p[i].repelRadius = repelRadius;
     }
     
     updating = false;

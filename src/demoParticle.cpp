@@ -3,6 +3,9 @@
 //------------------------------------------------------------------
 demoParticle::demoParticle(){
 	attractPoints = NULL;
+    repelRadius = 150;
+    holdRadius = 250;
+    attractRadius = 350;
 }
 
 //------------------------------------------------------------------
@@ -60,13 +63,13 @@ void demoParticle::update(){
 		frc.normalize();
 		
 		vel *= drag; 
-		if( dist < 150 ){
+		if( dist < repelRadius ){
             
             //MH PUSH AWAY
             
 			vel += -frc * 0.6; //notice the frc is negative 
 		}
-        else if (dist > 250 && dist < 350){
+        else if (dist > holdRadius && dist < attractRadius){
             
             //MH SLOW VELOCITY
             
@@ -83,7 +86,7 @@ void demoParticle::update(){
             vel -= frc * 0.04;
             
 		}
-        else if (dist >= 350){
+        else if (dist >= attractRadius){
             
             //MH ATTRACT BACK IN
             

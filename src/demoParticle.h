@@ -16,6 +16,7 @@ class demoParticle{
 		void setMode(particleMode newMode);	
 		void setAttractPoints( vector <ofPoint> * attract );
 
+        void setup();
 		void reset();
 		void update();
 		void draw();		
@@ -27,6 +28,10 @@ class demoParticle{
 		float drag; 
 		float uniqueVal;
 		float scale;
+    
+        int repelRadius;
+        int holdRadius;
+        int attractRadius;
 		
 		particleMode mode;
 		

@@ -33,10 +33,12 @@ class ofApp : public ofBaseApp{
 		vector <ofPoint> attractPointsWithMovement;
     
         void numParticlesChanged(int & numParticles);
+        void repelRadiusChanged(int & repelRadius);
     
         //ofxFloatSlider radiusInner;
         bool updating;
         ofxIntSlider numParticles;
+        ofxIntSlider repelRadius;
         ofxPanel gui;
 		
 };
