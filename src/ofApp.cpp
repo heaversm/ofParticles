@@ -8,9 +8,11 @@ void ofApp::setup(){
     
     numParticles.addListener(this, &ofApp::numParticlesChanged);
     repelRadius.addListener(this, &ofApp::repelRadiusChanged);
+    attractRadius.addListener(this, &ofApp::attractRadiusChanged);
 
     gui.add(numParticles.setup("particles", 300, 10, 1500)); //MH initial, min, max
-    gui.add(repelRadius.setup("repel radius", 150, 0, 350)); //MH initial, min, max
+    gui.add(repelRadius.setup("repel radius", 150, 0, 350));
+    gui.add(attractRadius.setup("attract radius", 350, 50, 600));
 	
 	//int num = 300;
     int num = numParticles;
@@ -53,6 +55,17 @@ void ofApp::repelRadiusChanged(int &repelRadius){
     
     for(unsigned int i = 0; i < p.size(); i++){
         p[i].repelRadius = repelRadius;
+    }
+    
+    updating = false;
+}
+
+void ofApp::attractRadiusChanged(int &attractRadius){
+    
+    updating = true;
+    
+    for(unsigned int i = 0; i < p.size(); i++){
+        p[i].attractRadius = attractRadius;
     }
     
     updating = false;

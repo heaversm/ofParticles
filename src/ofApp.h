@@ -34,11 +34,13 @@ class ofApp : public ofBaseApp{
     
         void numParticlesChanged(int & numParticles);
         void repelRadiusChanged(int & repelRadius);
+        void attractRadiusChanged(int & attractRadius);
     
         //ofxFloatSlider radiusInner;
         bool updating;
         ofxIntSlider numParticles;
         ofxIntSlider repelRadius;
+        ofxIntSlider attractRadius;
         ofxPanel gui;
 		
 };

@@ -29,9 +29,9 @@ class demoParticle{
 		float uniqueVal;
 		float scale;
     
-        int repelRadius;
-        int holdRadius;
-        int attractRadius;
+        int repelRadius; //inner radius of particle cloud
+        int holdRadius; //particle cloud 'thickness'
+        int attractRadius; //outer radius of particle cloud
 		
 		particleMode mode;
 		
