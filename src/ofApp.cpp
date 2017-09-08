@@ -13,6 +13,7 @@ void ofApp::setup(){
     gui.add(numParticles.setup("particles", 300, 10, 1500)); //MH initial, min, max
     gui.add(repelRadius.setup("repel radius", 150, 0, 350));
     gui.add(attractRadius.setup("attract radius", 350, 50, 600));
+    gui.add(holdRadius.setup("hold radius", 250, 100, 500));
 	
 	//int num = 300;
     int num = numParticles;
@@ -50,7 +51,7 @@ void ofApp::numParticlesChanged(int &numParticles){
 //--------------------------------------------------------------
 
 void ofApp::repelRadiusChanged(int &repelRadius){
-    
+    std::cout << "value: " << repelRadius << endl;
     updating = true;
     
     for(unsigned int i = 0; i < p.size(); i++){
@@ -66,6 +67,17 @@ void ofApp::attractRadiusChanged(int &attractRadius){
     
     for(unsigned int i = 0; i < p.size(); i++){
         p[i].attractRadius = attractRadius;
+    }
+    
+    updating = false;
+}
+
+void ofApp::holdRadiusChanged(int &holdRadius){
+    
+    updating = true;
+    
+    for(unsigned int i = 0; i < p.size(); i++){
+        p[i].holdRadius = holdRadius;
     }
     
     updating = false;
@@ -128,7 +140,9 @@ void ofApp::draw(){
         ofSetColor(230);	
         //ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode.", 10, 20);
         
-        gui.draw();
+        if(!bHide){
+            gui.draw();
+        }
 
     }
 }
@@ -151,11 +165,37 @@ void ofApp::keyPressed(int key){
 		currentMode = PARTICLE_MODE_NOISE;
 		currentModeStr = "4 - PARTICLE_MODE_NOISE: snow particle simulation"; 						
 		resetParticles();
-	}	
-		
+    }
+    if(key == 'g'){
+        bHide = !bHide;
+    }
+    if(key == 'h'){
+        if (holdRadius < holdRadius.getMax() - 10){
+            holdRadius = holdRadius+10;
+        } else {
+            holdRadius = holdRadius.getMin();
+        }
+        
+    }
+    if(key == 'i'){
+        if (repelRadius < repelRadius.getMax() - 10){
+            repelRadius = repelRadius+10;
+        } else {
+            repelRadius = repelRadius.getMin();
+        }
+        
+    }
+    if(key == 'o'){
+        if (attractRadius < attractRadius.getMax() - 10){
+            attractRadius = attractRadius+10;
+        } else {
+            attractRadius = attractRadius.getMin();
+        }
+    }
 	if( key == ' ' ){
 		resetParticles();
 	}
+    
 }
 
 //--------------------------------------------------------------
