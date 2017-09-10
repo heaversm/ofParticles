@@ -1,1 +1,2 @@
+ofxEasing
 ofxGui

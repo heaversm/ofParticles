@@ -15,6 +15,7 @@ class demoParticle{
 		
 		void setMode(particleMode newMode);	
 		void setAttractPoints( vector <ofPoint> * attract );
+        void setColor(int colorR,int colorG,int colorB);
 
         void setup();
 		void reset();
@@ -30,9 +31,7 @@ class demoParticle{
 		float uniqueVal;
 		float scale;
     
-        int colorR;
-        int colorG;
-        int colorB;
+        ofColor curColor;
         int repelRadius; //inner radius of particle cloud
         int holdRadius; //particle cloud 'thickness'
         int attractRadius; //outer radius of particle cloud

@@ -9,9 +9,10 @@ void ofApp::setup(){
     numParticles.addListener(this, &ofApp::numParticlesChanged);
     repelRadius.addListener(this, &ofApp::repelRadiusChanged);
     attractRadius.addListener(this, &ofApp::attractRadiusChanged);
-    colorR.addListener(this, &ofApp::colorRChanged);
-    colorG.addListener(this, &ofApp::colorGChanged);
-    colorB.addListener(this, &ofApp::colorBChanged);
+    colorR.addListener(this, &ofApp::colorChanged);
+    colorG.addListener(this, &ofApp::colorChanged);
+    colorB.addListener(this, &ofApp::colorChanged);
+    randColor.addListener(this, &ofApp::randColorChanged);
 
     gui.add(numParticles.setup("particles", 300, 10, 1500)); //MH initial, min, max
     gui.add(repelRadius.setup("repel radius", 150, 0, 350));
@@ -20,6 +21,7 @@ void ofApp::setup(){
     gui.add(colorR.setup("R", 208,0,255));
     gui.add(colorG.setup("G", 255,0,255));
     gui.add(colorB.setup("B", 63,0,255));
+    gui.add(randColor.setup("random color", false));
 	
 	//int num = 300;
     int num = numParticles;
@@ -33,36 +35,30 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 
-void ofApp::colorRChanged(int &colorR){
+void ofApp::randColorChanged(bool &randColor){
     
     updating = true;
     
-    for(unsigned int i = 0; i < p.size(); i++){
-        p[i].colorR = colorR;
+    if (randColor){
+        colorR = ofRandom( 0, 255 );
+        colorG = ofRandom( 0, 255 );
+        colorB = ofRandom( 0, 255 );
+        setColor();
     }
     
     updating = false;
 }
-            
-void ofApp::colorGChanged(int &colorG){
-    
-    updating = true;
-    
+
+void ofApp::setColor(){
     for(unsigned int i = 0; i < p.size(); i++){
-        p[i].colorG = colorG;
+        p[i].setColor(colorR,colorG,colorB);
     }
-    
-    updating = false;
 }
-            
-void ofApp::colorBChanged(int &colorB){
+
+void ofApp::colorChanged(int &color){
     
     updating = true;
-    
-    for(unsigned int i = 0; i < p.size(); i++){
-        p[i].colorB = colorB;
-    }
-    
+    setColor();
     updating = false;
 }
 
