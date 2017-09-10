@@ -7,13 +7,15 @@ demoParticle::demoParticle(){
     holdRadius = 250;
     attractRadius = 350;
     curColor = ofColor(208,255,63);
+    newColor = ofColor(0,0,0);
+    colorLerp = 0.0;
 }
 
 //------------------------------------------------------------------
 void demoParticle::setColor(int colorR,int colorG, int colorB){
-    ofColor newColor = ofColor(colorR,colorG,colorB);
+    newColor = ofColor(colorR,colorG,colorB);
     //curColor = newColor;
-    curColor.lerp(newColor,1.0);
+    colorLerp = 0.001f;
 }
 
 //------------------------------------------------------------------
@@ -63,6 +65,14 @@ void demoParticle::update(){
 		vel += frc * 0.6; //apply force
 	}
 	else if( mode == PARTICLE_MODE_REPEL ){
+        
+        if (colorLerp > 0.0f && colorLerp < 1.0f){
+            colorLerp = colorLerp + .001;
+            curColor.lerp(newColor,colorLerp);
+        } else {
+            colorLerp = 0.0f;
+        }
+        
 		ofPoint attractPt(ofGetMouseX(), ofGetMouseY());
 		frc = attractPt-pos; 
 		
