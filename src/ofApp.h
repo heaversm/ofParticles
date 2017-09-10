@@ -36,6 +36,9 @@ class ofApp : public ofBaseApp{
         void repelRadiusChanged(int & repelRadius);
         void attractRadiusChanged(int & attractRadius);
         void holdRadiusChanged(int & holdRadius);
+        void colorRChanged(int & colorR);
+        void colorGChanged(int & colorG);
+        void colorBChanged(int & colorB);
     
         //ofxFloatSlider radiusInner;
         bool updating;
@@ -44,6 +47,9 @@ class ofApp : public ofBaseApp{
         ofxIntSlider repelRadius;
         ofxIntSlider attractRadius;
         ofxIntSlider holdRadius;
+        ofxIntSlider colorR;
+        ofxIntSlider colorG;
+        ofxIntSlider colorB;
         ofxPanel gui;
 		
 };

@@ -9,11 +9,17 @@ void ofApp::setup(){
     numParticles.addListener(this, &ofApp::numParticlesChanged);
     repelRadius.addListener(this, &ofApp::repelRadiusChanged);
     attractRadius.addListener(this, &ofApp::attractRadiusChanged);
+    colorR.addListener(this, &ofApp::colorRChanged);
+    colorG.addListener(this, &ofApp::colorGChanged);
+    colorB.addListener(this, &ofApp::colorBChanged);
 
     gui.add(numParticles.setup("particles", 300, 10, 1500)); //MH initial, min, max
     gui.add(repelRadius.setup("repel radius", 150, 0, 350));
     gui.add(attractRadius.setup("attract radius", 350, 50, 600));
     gui.add(holdRadius.setup("hold radius", 250, 100, 500));
+    gui.add(colorR.setup("R", 208,0,255));
+    gui.add(colorG.setup("G", 255,0,255));
+    gui.add(colorB.setup("B", 63,0,255));
 	
 	//int num = 300;
     int num = numParticles;
@@ -23,6 +29,41 @@ void ofApp::setup(){
 	currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 
 
 	resetParticles();
+}
+
+//--------------------------------------------------------------
+
+void ofApp::colorRChanged(int &colorR){
+    
+    updating = true;
+    
+    for(unsigned int i = 0; i < p.size(); i++){
+        p[i].colorR = colorR;
+    }
+    
+    updating = false;
+}
+            
+void ofApp::colorGChanged(int &colorG){
+    
+    updating = true;
+    
+    for(unsigned int i = 0; i < p.size(); i++){
+        p[i].colorG = colorG;
+    }
+    
+    updating = false;
+}
+            
+void ofApp::colorBChanged(int &colorB){
+    
+    updating = true;
+    
+    for(unsigned int i = 0; i < p.size(); i++){
+        p[i].colorB = colorB;
+    }
+    
+    updating = false;
 }
 
 //--------------------------------------------------------------
@@ -149,6 +190,8 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    
+    //MODE
 	if( key == '1'){
 		currentMode = PARTICLE_MODE_ATTRACT;
 		currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 		
@@ -166,9 +209,11 @@ void ofApp::keyPressed(int key){
 		currentModeStr = "4 - PARTICLE_MODE_NOISE: snow particle simulation"; 						
 		resetParticles();
     }
-    if(key == 'g'){
+    if(key == 'a'){
         bHide = !bHide;
     }
+    
+    //RESET
     if(key == 'h'){
         if (holdRadius < holdRadius.getMax() - 10){
             holdRadius = holdRadius+10;
@@ -192,6 +237,31 @@ void ofApp::keyPressed(int key){
             attractRadius = attractRadius.getMin();
         }
     }
+    
+    //COLOR
+    if(key == 'r'){
+        if (colorR < 245){
+            colorR = colorR+10;
+        } else {
+            colorR = 0;
+        }
+    }
+    if(key == 'g'){
+        if (colorG < 245){
+            colorG = colorG+10;
+        } else {
+            colorG = 0;
+        }
+    }
+    if(key == 'b'){
+        if (colorB < 245){
+            colorB = colorB+10;
+        } else {
+            colorB = 0;
+        }
+    }
+    
+    //RESET
 	if( key == ' ' ){
 		resetParticles();
 	}

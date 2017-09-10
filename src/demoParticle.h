@@ -24,11 +24,15 @@ class demoParticle{
 		ofPoint pos;
 		ofPoint vel;
 		ofPoint frc;
+    
 		
-		float drag; 
+		float drag;
 		float uniqueVal;
 		float scale;
     
+        int colorR;
+        int colorG;
+        int colorB;
         int repelRadius; //inner radius of particle cloud
         int holdRadius; //particle cloud 'thickness'
         int attractRadius; //outer radius of particle cloud
