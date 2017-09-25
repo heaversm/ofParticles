@@ -15,7 +15,7 @@ demoParticle::demoParticle(){
 void demoParticle::setColor(int colorR,int colorG, int colorB){
     newColor = ofColor(colorR,colorG,colorB);
     //curColor = newColor;
-    colorLerp = 0.001f;
+    colorLerp = 0.01f;
 }
 
 //------------------------------------------------------------------
@@ -67,7 +67,7 @@ void demoParticle::update(){
 	else if( mode == PARTICLE_MODE_REPEL ){
         
         if (colorLerp > 0.0f && colorLerp < 1.0f){
-            colorLerp = colorLerp + .001;
+            colorLerp = colorLerp + .01;
             curColor.lerp(newColor,colorLerp);
         } else {
             colorLerp = 0.0f;

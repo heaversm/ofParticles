@@ -52,5 +52,8 @@ class ofApp : public ofBaseApp{
         ofxIntSlider colorB;
         ofxToggle randColor;
         ofxPanel gui;
+
+        float randColorLerp;
+        void newColor();
 		
 };

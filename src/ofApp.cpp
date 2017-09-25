@@ -22,6 +22,7 @@ void ofApp::setup(){
     gui.add(colorG.setup("G", 255,0,255));
     gui.add(colorB.setup("B", 63,0,255));
     gui.add(randColor.setup("random color", false));
+    randColorLerp = 0.0;
 	
 	//int num = 300;
     int num = numParticles;
@@ -29,8 +30,10 @@ void ofApp::setup(){
 	currentMode = PARTICLE_MODE_ATTRACT;
 
 	currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 
-
+    
 	resetParticles();
+
+    
 }
 
 //--------------------------------------------------------------
@@ -44,6 +47,9 @@ void ofApp::randColorChanged(bool &randColor){
         colorG = ofRandom( 0, 255 );
         colorB = ofRandom( 0, 255 );
         setColor();
+        randColorLerp = 0.001f;
+    } else {
+        randColorLerp = 0.000f;
     }
     
     updating = false;
@@ -150,7 +156,25 @@ void ofApp::update(){
 	for(unsigned int i = 0; i < attractPointsWithMovement.size(); i++){
 		attractPointsWithMovement[i].x = attractPoints[i].x + ofSignedNoise(i * 10, ofGetElapsedTimef() * 0.7) * 12.0;
 		attractPointsWithMovement[i].y = attractPoints[i].y + ofSignedNoise(i * -10, ofGetElapsedTimef() * 0.7) * 12.0;
-	}	
+	}
+
+    if (randColor && randColorLerp > 0.0f && randColorLerp <= 0.90f){
+                randColorLerp = randColorLerp + .01;
+    } else if (randColor && randColorLerp > 0.90f) {
+        std::cout << "newColor: " << randColorLerp << endl;
+        newColor();
+    }
+
+}
+
+//--------------------------------------------------------------
+void ofApp::newColor(){
+    
+    colorR = ofRandom( 0, 255 );
+    colorG = ofRandom( 0, 255 );
+    colorB = ofRandom( 0, 255 );
+    setColor();
+    randColorLerp = 0.01f;
 }
 
 //--------------------------------------------------------------
