@@ -40,6 +40,7 @@ class ofApp : public ofBaseApp{
         void randColorChanged(bool & randColor);
         void alternateForcesChanged(bool & alternateForces);
         void setColor();
+        void changeForce();
     
         //ofxFloatSlider radiusInner;
         bool updating;
@@ -58,6 +59,6 @@ class ofApp : public ofBaseApp{
         float randColorLerp;
         void newColor();
     
-        float attractLerp;
+        float alternateForcesLerp;
 		
 };

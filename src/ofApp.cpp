@@ -77,7 +77,12 @@ void ofApp::alternateForcesChanged(bool &alternateForces){
     updating = true;
     
     if (alternateForces){
-        currentMode = PARTICLE_MODE_ATTRACT;
+        if (currentMode == PARTICLE_MODE_ATTRACT){
+            currentMode = PARTICLE_MODE_REPEL;
+        } else {
+            currentMode = PARTICLE_MODE_ATTRACT;
+        };
+        alternateForcesLerp = 0.001f;
     } else {
         currentMode = PARTICLE_MODE_REPEL;
     }
@@ -164,6 +169,7 @@ void ofApp::resetParticles(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    //std::cout << "currentMode: " << currentMode << endl;
 	for(unsigned int i = 0; i < p.size(); i++){
 		p[i].setMode(currentMode);
 		p[i].update();
@@ -178,11 +184,27 @@ void ofApp::update(){
     if (randColor && randColorLerp > 0.0f && randColorLerp <= 0.90f){
                 randColorLerp = randColorLerp + .01;
     } else if (randColor && randColorLerp > 0.90f) {
-        std::cout << "newColor: " << randColorLerp << endl;
         newColor();
+    }
+    
+    if (alternateForces && alternateForcesLerp > 0.0f && alternateForcesLerp <= 0.90f){
+        alternateForcesLerp = alternateForcesLerp + .01;
+    } else if (alternateForces && alternateForcesLerp > 0.90f) {
+        changeForce();
     }
 
 }
+
+//--------------------------------------------------------------
+void ofApp::changeForce(){
+    if (currentMode == PARTICLE_MODE_ATTRACT){
+        currentMode = PARTICLE_MODE_REPEL;
+    } else {
+        currentMode = PARTICLE_MODE_ATTRACT;
+    };
+    alternateForcesLerp = 0.01f;
+}
+
 
 //--------------------------------------------------------------
 void ofApp::newColor(){
