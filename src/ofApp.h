@@ -38,6 +38,7 @@ class ofApp : public ofBaseApp{
         void holdRadiusChanged(int & holdRadius);
         void colorChanged(int & color);
         void randColorChanged(bool & randColor);
+        void alternateForcesChanged(bool & alternateForces);
         void setColor();
     
         //ofxFloatSlider radiusInner;
@@ -51,9 +52,12 @@ class ofApp : public ofBaseApp{
         ofxIntSlider colorG;
         ofxIntSlider colorB;
         ofxToggle randColor;
+        ofxToggle alternateForces;
         ofxPanel gui;
 
         float randColorLerp;
         void newColor();
+    
+        float attractLerp;
 		
 };

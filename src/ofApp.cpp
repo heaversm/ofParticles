@@ -13,6 +13,7 @@ void ofApp::setup(){
     colorG.addListener(this, &ofApp::colorChanged);
     colorB.addListener(this, &ofApp::colorChanged);
     randColor.addListener(this, &ofApp::randColorChanged);
+    alternateForces.addListener(this, &ofApp::alternateForcesChanged);
 
     gui.add(numParticles.setup("particles", 300, 10, 1500)); //MH initial, min, max
     gui.add(repelRadius.setup("repel radius", 150, 0, 350));
@@ -22,6 +23,7 @@ void ofApp::setup(){
     gui.add(colorG.setup("G", 255,0,255));
     gui.add(colorB.setup("B", 63,0,255));
     gui.add(randColor.setup("random color", false));
+    gui.add(alternateForces.setup("alternate forces", false));
     randColorLerp = 0.0;
 	
 	//int num = 300;
@@ -65,6 +67,21 @@ void ofApp::colorChanged(int &color){
     
     updating = true;
     setColor();
+    updating = false;
+}
+
+//--------------------------------------------------------------
+
+void ofApp::alternateForcesChanged(bool &alternateForces){
+    
+    updating = true;
+    
+    if (alternateForces){
+        currentMode = PARTICLE_MODE_ATTRACT;
+    } else {
+        currentMode = PARTICLE_MODE_REPEL;
+    }
+    
     updating = false;
 }
 
