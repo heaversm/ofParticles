@@ -55,10 +55,13 @@ class ofApp : public ofBaseApp{
         ofxToggle randColor;
         ofxToggle alternateForces;
         ofxPanel gui;
-
         float randColorLerp;
         void newColor();
-    
         float alternateForcesLerp;
+    
+        ofSoundPlayer  beats;
+        int nBandsToGet;
+        float * fftSmoothed;
+        
 		
 };

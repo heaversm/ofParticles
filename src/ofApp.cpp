@@ -31,7 +31,18 @@ void ofApp::setup(){
 	p.assign(num, demoParticle());
 	currentMode = PARTICLE_MODE_ATTRACT;
 
-	currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 
+	currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse";
+    
+    beats.load("sounds/beat.mp3");
+    beats.setVolume(0.75f);
+    beats.setLoop(true);
+    nBandsToGet = 128;
+    
+    fftSmoothed = new float[8192];
+    for (int i = 0; i < 8192; i++){
+        fftSmoothed[i] = 0;
+    }
+
     
 	resetParticles();
 
@@ -116,7 +127,7 @@ void ofApp::numParticlesChanged(int &numParticles){
 //--------------------------------------------------------------
 
 void ofApp::repelRadiusChanged(int &repelRadius){
-    std::cout << "value: " << repelRadius << endl;
+    //std::cout << "value: " << repelRadius << endl;
     updating = true;
     
     for(unsigned int i = 0; i < p.size(); i++){
@@ -193,6 +204,33 @@ void ofApp::update(){
         changeForce();
     }
 
+    ofSoundUpdate();
+    if (beats.isPlaying()){
+        float * val = ofSoundGetSpectrum(nBandsToGet);
+        
+        /*for (int i = 0;i < nBandsToGet; i++){ //no smoothing
+            std::cout << val[i] << endl;
+        }*/
+        
+        for (int i = 0;i < nBandsToGet; i++){
+            
+            // let the smoothed calue sink to zero:
+            fftSmoothed[i] *= 0.96f;
+            
+            // take the max, either the smoothed or the incoming:
+            if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i];
+            if (val[i] > 0.1){
+                //std::cout << val[i] << endl;
+                if (val[i] > .5){
+                    currentMode = PARTICLE_MODE_ATTRACT;
+                } else {
+                    currentMode = PARTICLE_MODE_REPEL;
+                }
+            }
+        }
+        
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -272,7 +310,7 @@ void ofApp::keyPressed(int key){
         bHide = !bHide;
     }
     
-    //RESET
+    //FORCES
     if(key == 'h'){
         if (holdRadius < holdRadius.getMax() - 10){
             holdRadius = holdRadius+10;
@@ -317,6 +355,15 @@ void ofApp::keyPressed(int key){
             colorB = colorB+10;
         } else {
             colorB = 0;
+        }
+    }
+    
+    //MUSIC
+    if (key == 'm'){
+        if (beats.isPlaying()){
+            beats.stop();
+        } else {
+            beats.play();
         }
     }
     
