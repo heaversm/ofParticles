@@ -5,7 +5,8 @@ enum particleMode{
 	PARTICLE_MODE_ATTRACT = 0,
 	PARTICLE_MODE_REPEL,
 	PARTICLE_MODE_NEAREST_POINTS,
-	PARTICLE_MODE_NOISE
+	PARTICLE_MODE_NOISE,
+    PARTICLE_MODE_BEATS
 };
 
 class demoParticle{
@@ -39,6 +40,8 @@ class demoParticle{
         int attractRadius; //outer radius of particle cloud
 		
 		particleMode mode;
+    
+        float soundVal;
 		
 		vector <ofPoint> * attractPoints;
     

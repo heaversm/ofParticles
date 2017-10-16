@@ -206,11 +206,8 @@ void ofApp::update(){
 
     ofSoundUpdate();
     if (beats.isPlaying()){
+        currentMode = PARTICLE_MODE_BEATS;
         float * val = ofSoundGetSpectrum(nBandsToGet);
-        
-        /*for (int i = 0;i < nBandsToGet; i++){ //no smoothing
-            std::cout << val[i] << endl;
-        }*/
         
         for (int i = 0;i < nBandsToGet; i++){
             
@@ -220,11 +217,13 @@ void ofApp::update(){
             // take the max, either the smoothed or the incoming:
             if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i];
             if (val[i] > 0.1){
-                //std::cout << val[i] << endl;
-                if (val[i] > .5){
-                    currentMode = PARTICLE_MODE_ATTRACT;
-                } else {
-                    currentMode = PARTICLE_MODE_REPEL;
+//                if (val[i] > .5){
+//                    currentMode = PARTICLE_MODE_ATTRACT;
+//                } else {
+//                    currentMode = PARTICLE_MODE_REPEL;
+//                }
+                for(unsigned int i = 0; i < p.size(); i++){
+                    p[i].soundVal = *val;
                 }
             }
         }
