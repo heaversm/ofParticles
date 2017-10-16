@@ -41,6 +41,7 @@ class demoParticle{
 		
 		particleMode mode;
     
+        ofPoint windowCenter;
         float soundVal;
 		
 		vector <ofPoint> * attractPoints;

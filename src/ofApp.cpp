@@ -88,14 +88,17 @@ void ofApp::alternateForcesChanged(bool &alternateForces){
     updating = true;
     
     if (alternateForces){
-        if (currentMode == PARTICLE_MODE_ATTRACT){
-            currentMode = PARTICLE_MODE_REPEL;
+        
+        if (!beats.isPlaying()){
+            if (currentMode == PARTICLE_MODE_ATTRACT){
+                currentMode = PARTICLE_MODE_REPEL;
+            } else {
+                currentMode = PARTICLE_MODE_ATTRACT;
+            };
+            alternateForcesLerp = 0.001f;
         } else {
-            currentMode = PARTICLE_MODE_ATTRACT;
-        };
-        alternateForcesLerp = 0.001f;
-    } else {
-        currentMode = PARTICLE_MODE_REPEL;
+            currentMode = PARTICLE_MODE_REPEL;
+        }
     }
     
     updating = false;
@@ -180,7 +183,8 @@ void ofApp::resetParticles(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    //std::cout << "currentMode: " << currentMode << endl;
+
+    //std::cout << "mouse: " << attractPt << ", " << windowDim << endl;
 	for(unsigned int i = 0; i < p.size(); i++){
 		p[i].setMode(currentMode);
 		p[i].update();
@@ -217,13 +221,16 @@ void ofApp::update(){
             // take the max, either the smoothed or the incoming:
             if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i];
             if (val[i] > 0.1){
-//                if (val[i] > .5){
-//                    currentMode = PARTICLE_MODE_ATTRACT;
-//                } else {
-//                    currentMode = PARTICLE_MODE_REPEL;
-//                }
-                for(unsigned int i = 0; i < p.size(); i++){
-                    p[i].soundVal = *val;
+                if (alternateForces){ //toggle modes
+                    if (val[i] > .5){
+                        currentMode = PARTICLE_MODE_ATTRACT;
+                    } else {
+                        currentMode = PARTICLE_MODE_REPEL;
+                    }
+                } else { //send forces dynamically
+                    for(unsigned int i = 0; i < p.size(); i++){
+                        p[i].soundVal = *val;
+                    }
                 }
             }
         }

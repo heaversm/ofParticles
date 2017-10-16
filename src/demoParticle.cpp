@@ -9,6 +9,7 @@ demoParticle::demoParticle(){
     curColor = ofColor(208,255,63);
     newColor = ofColor(0,0,0);
     colorLerp = 0.0;
+    windowCenter = ofPoint(ofGetWindowWidth()/2,ofGetWindowHeight()/2);
 }
 
 //------------------------------------------------------------------
@@ -64,8 +65,8 @@ void demoParticle::update(){
 		vel *= drag; //apply drag
 		vel += frc * 0.6; //apply force
 	}
-    else if ( mode == PARTICLE_MODE_BEATS ){
-        ofPoint attractPt(ofGetWindowHeight()/2, ofGetWindowWidth()/2);
+    else if ( mode == PARTICLE_MODE_BEATS ){ //RESPOND TO MUSIC
+        ofPoint attractPt(windowCenter);
         frc = attractPt-pos;
         frc.normalize(); //by normalizing we disregard how close the particle is to the attraction point //MH - remove?
         float dist = frc.length();
