@@ -66,15 +66,23 @@ void demoParticle::update(){
 		vel += frc * 0.6; //apply force
 	}
     else if ( mode == PARTICLE_MODE_BEATS ){ //RESPOND TO MUSIC
-        ofPoint attractPt(windowCenter);
-        frc = attractPt-pos;
-        frc.normalize(); //by normalizing we disregard how close the particle is to the attraction point //MH - remove?
+        ofPoint attractPt(ofGetMouseX(), ofGetMouseY());
+        frc = attractPt-pos; // we get the attraction force/vector by looking at the mouse pos relative to our pos
+        frc.normalize(); //by normalizing we disregard how close the particle is to the attraction point
         float dist = frc.length();
         vel *= drag; //apply drag
-
-        //MH - apply soundVal to frc
-        float forceFactor = -.5 + soundVal;
-        vel += frc * forceFactor; //apply force
+        
+        
+        if( dist < repelRadius ){
+            //MH PUSH AWAY
+            float forceFactor = soundVal;
+            vel += frc * forceFactor;
+        } else {
+            //MH ATTRACT BACK IN
+            float forceFactor = soundVal;
+            vel += -frc * forceFactor;
+        }
+        
         
     }
 	else if( mode == PARTICLE_MODE_REPEL ){
