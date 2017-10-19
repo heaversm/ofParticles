@@ -74,6 +74,13 @@ void ofApp::setColor(){
     }
 }
 
+void ofApp::setBeatColor(float &color){
+    int colorH = ofMap(color, 0, 2, 0, 255);
+    for(unsigned int i = 0; i < p.size(); i++){
+        p[i].setBeatColor(colorH,255,255);
+    }
+}
+
 void ofApp::colorChanged(int &color){
     
     updating = true;
@@ -221,6 +228,8 @@ void ofApp::update(){
             // take the max, either the smoothed or the incoming:
             if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i];
             if (val[i] > 0.1){
+                
+                //FORCE
                 if (alternateForces){ //toggle modes
                     if (val[i] > .5){
                         currentMode = PARTICLE_MODE_ATTRACT;
@@ -234,6 +243,9 @@ void ofApp::update(){
                 }
             }
         }
+        
+        //COLOR
+        setBeatColor(*val);
         
     }
     

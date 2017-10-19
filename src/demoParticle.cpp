@@ -19,6 +19,10 @@ void demoParticle::setColor(int colorR,int colorG, int colorB){
     colorLerp = 0.01f;
 }
 
+void demoParticle::setBeatColor(int colorH, int colorS, int colorB){
+    newColor.setHsb(colorH, colorS, colorB);
+}
+
 //------------------------------------------------------------------
 void demoParticle::setMode(particleMode newMode){
 	mode = newMode;
@@ -232,6 +236,9 @@ void demoParticle::draw(){
 	else if( mode == PARTICLE_MODE_REPEL ){
 		ofSetColor(curColor);
 	}
+    else if ( mode == PARTICLE_MODE_BEATS){
+        ofSetColor(newColor);
+    }
 	else if( mode == PARTICLE_MODE_NOISE ){
 		ofSetColor(99, 63, 255);
 	}

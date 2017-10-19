@@ -62,6 +62,7 @@ class ofApp : public ofBaseApp{
         ofSoundPlayer  beats;
         int nBandsToGet;
         float * fftSmoothed;
+        void setBeatColor(float & color);
         
 		
 };
