@@ -353,6 +353,11 @@ void ofApp::keyPressed(int key){
             attractRadius = attractRadius.getMin();
         }
     }
+    if(key == 'f'){ //alternate forces
+        alternateForces = !alternateForces;
+        bool doAlternateForces = &alternateForces;
+        alternateForcesChanged(doAlternateForces);
+    }
     
     //COLOR
     if(key == 'r'){
