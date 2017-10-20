@@ -44,6 +44,7 @@ class demoParticle{
         ofPoint windowCenter;
         float soundVal;
         void setBeatColor(int colorH, int colorS, int colorB);
+        bool alternateForces;
 		
 		vector <ofPoint> * attractPoints;
     

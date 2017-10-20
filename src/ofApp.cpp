@@ -239,6 +239,7 @@ void ofApp::update(){
                 } else { //send forces dynamically
                     for(unsigned int i = 0; i < p.size(); i++){
                         p[i].soundVal = *val;
+                        p[i].alternateForces = alternateForces;
                     }
                 }
             }

@@ -10,6 +10,7 @@ demoParticle::demoParticle(){
     newColor = ofColor(0,0,0);
     colorLerp = 0.0;
     windowCenter = ofPoint(ofGetWindowWidth()/2,ofGetWindowHeight()/2);
+    alternateForces = false;
 }
 
 //------------------------------------------------------------------
@@ -237,7 +238,9 @@ void demoParticle::draw(){
 		ofSetColor(curColor);
 	}
     else if ( mode == PARTICLE_MODE_BEATS){
-        ofSetColor(newColor);
+        if (!alternateForces){
+            ofSetColor(newColor);
+        }
     }
 	else if( mode == PARTICLE_MODE_NOISE ){
 		ofSetColor(99, 63, 255);
