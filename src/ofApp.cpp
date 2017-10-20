@@ -330,6 +330,11 @@ void ofApp::keyPressed(int key){
     }
     
     //FORCES
+    if(key == 'f'){ //toggle alternate forces
+        alternateForces = !alternateForces;
+        bool doAlternateForces = &alternateForces;
+        alternateForcesChanged(doAlternateForces);
+    }
     if(key == 'h'){
         if (holdRadius < holdRadius.getMax() - 10){
             holdRadius = holdRadius+10;
@@ -353,13 +358,14 @@ void ofApp::keyPressed(int key){
             attractRadius = attractRadius.getMin();
         }
     }
-    if(key == 'f'){ //alternate forces
-        alternateForces = !alternateForces;
-        bool doAlternateForces = &alternateForces;
-        alternateForcesChanged(doAlternateForces);
-    }
+    
     
     //COLOR
+    if(key == 'c'){ //toggle random color
+        randColor = !randColor;
+        bool doRandomColor = &randColor;
+        randColorChanged(doRandomColor);
+    }
     if(key == 'r'){
         if (colorR < 245){
             colorR = colorR+10;
