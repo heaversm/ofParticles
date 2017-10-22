@@ -51,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		99A2FC1C1F9CD856000145B7 /* ofxSimpleScreenRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSimpleScreenRecorder.h; sourceTree = "<group>"; };
+		99A2FC1D1F9CD856000145B7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		99D571E61F5ED14F00EEEA43 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
 		99D571E71F5ED14F00EEEA43 /* ofxBaseGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
 		99D571E81F5ED14F00EEEA43 /* ofxButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
@@ -99,6 +101,16 @@
 			name = local_addons;
 			sourceTree = "<group>";
 		};
+		99A2FC1B1F9CD856000145B7 /* ofxSimpleScreenRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				99A2FC1C1F9CD856000145B7 /* ofxSimpleScreenRecorder.h */,
+				99A2FC1D1F9CD856000145B7 /* README.md */,
+			);
+			name = ofxSimpleScreenRecorder;
+			path = ../../../addons/ofxSimpleScreenRecorder;
+			sourceTree = "<group>";
+		};
 		99D571E41F5ED14F00EEEA43 /* ofxGui */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +147,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				99A2FC1B1F9CD856000145B7 /* ofxSimpleScreenRecorder */,
 				99D571E41F5ED14F00EEEA43 /* ofxGui */,
 			);
 			name = addons;

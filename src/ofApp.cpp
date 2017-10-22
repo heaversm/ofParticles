@@ -42,6 +42,8 @@ void ofApp::setup(){
     for (int i = 0; i < 8192; i++){
         fftSmoothed[i] = 0;
     }
+    
+    mRenderer.setup(ofGetWidth(), ofGetHeight());
 
     
 	resetParticles();
@@ -277,6 +279,8 @@ void ofApp::newColor(){
 void ofApp::draw(){
     
     if (!updating){
+        mRenderer.begin();
+        
         //ofBackgroundGradient(ofColor(60,60,60), ofColor(10,10,10));
         ofBackground(ofColor(0,0,0));
         
@@ -300,6 +304,8 @@ void ofApp::draw(){
         if(!bHide){
             gui.draw();
         }
+        
+        mRenderer.end();
 
     }
 }
@@ -396,6 +402,12 @@ void ofApp::keyPressed(int key){
             beats.play();
         }
     }
+    
+    //RECORDING
+    if(key == 'z')
+        mRenderer.start();
+    else if(key == 'x')
+        mRenderer.stop();
     
     //RESET
 	if( key == ' ' ){
