@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		29E44B66ACF1D336223C6D5F /* demoParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACEEE5DC9831FFBD95787112 /* demoParticle.cpp */; };
+		99A2FC3B1F9E425E000145B7 /* ofxMacScreenRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 99A2FC361F9E414F000145B7 /* ofxMacScreenRecorder.mm */; };
 		99D571F71F5ED14F00EEEA43 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99D571E61F5ED14F00EEEA43 /* ofxBaseGui.cpp */; };
 		99D571F81F5ED14F00EEEA43 /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99D571E81F5ED14F00EEEA43 /* ofxButton.cpp */; };
 		99D571F91F5ED14F00EEEA43 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99D571EB1F5ED14F00EEEA43 /* ofxGuiGroup.cpp */; };
@@ -22,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		99A2FC381F9E414F000145B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99A2FC2B1F9E414E000145B7 /* ofxMacScreenRecorderExample.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B69B5B0A3A1756003C02F2;
+			remoteInfo = ofxMacScreenRecorderExample;
+		};
 		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
@@ -51,6 +59,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		99A2FC221F9E414E000145B7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		99A2FC231F9E414E000145B7 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		99A2FC251F9E414E000145B7 /* addons.make */ = {isa = PBXFileReference; lastKnownFileType = text; path = addons.make; sourceTree = "<group>"; };
+		99A2FC281F9E414E000145B7 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		99A2FC291F9E414E000145B7 /* config.make */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.make; sourceTree = "<group>"; };
+		99A2FC2A1F9E414E000145B7 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		99A2FC2B1F9E414E000145B7 /* ofxMacScreenRecorderExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = ofxMacScreenRecorderExample.xcodeproj; sourceTree = "<group>"; };
+		99A2FC2F1F9E414F000145B7 /* openFrameworks-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		99A2FC301F9E414F000145B7 /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		99A2FC321F9E414F000145B7 /* ofApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofApp.cpp; sourceTree = "<group>"; };
+		99A2FC331F9E414F000145B7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		99A2FC351F9E414F000145B7 /* ofxMacScreenRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMacScreenRecorder.h; sourceTree = "<group>"; };
+		99A2FC361F9E414F000145B7 /* ofxMacScreenRecorder.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxMacScreenRecorder.mm; sourceTree = "<group>"; };
 		99D571E61F5ED14F00EEEA43 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
 		99D571E71F5ED14F00EEEA43 /* ofxBaseGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
 		99D571E81F5ED14F00EEEA43 /* ofxButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
@@ -99,6 +120,75 @@
 			name = local_addons;
 			sourceTree = "<group>";
 		};
+		99A2FC211F9E414E000145B7 /* ofxMacScreenRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				99A2FC221F9E414E000145B7 /* .gitignore */,
+				99A2FC231F9E414E000145B7 /* LICENSE */,
+				99A2FC241F9E414E000145B7 /* ofxMacScreenRecorderExample */,
+				99A2FC331F9E414F000145B7 /* README.md */,
+				99A2FC341F9E414F000145B7 /* src */,
+			);
+			name = ofxMacScreenRecorder;
+			path = ../../../addons/ofxMacScreenRecorder;
+			sourceTree = "<group>";
+		};
+		99A2FC241F9E414E000145B7 /* ofxMacScreenRecorderExample */ = {
+			isa = PBXGroup;
+			children = (
+				99A2FC251F9E414E000145B7 /* addons.make */,
+				99A2FC261F9E414E000145B7 /* bin */,
+				99A2FC291F9E414E000145B7 /* config.make */,
+				99A2FC2A1F9E414E000145B7 /* Makefile */,
+				99A2FC2B1F9E414E000145B7 /* ofxMacScreenRecorderExample.xcodeproj */,
+				99A2FC2F1F9E414F000145B7 /* openFrameworks-Info.plist */,
+				99A2FC301F9E414F000145B7 /* Project.xcconfig */,
+				99A2FC311F9E414F000145B7 /* src */,
+			);
+			path = ofxMacScreenRecorderExample;
+			sourceTree = "<group>";
+		};
+		99A2FC261F9E414E000145B7 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				99A2FC271F9E414E000145B7 /* data */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		99A2FC271F9E414E000145B7 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				99A2FC281F9E414E000145B7 /* image.png */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		99A2FC2C1F9E414E000145B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				99A2FC391F9E414F000145B7 /* ofxMacScreenRecorderExampleDebug.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		99A2FC311F9E414F000145B7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				99A2FC321F9E414F000145B7 /* ofApp.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		99A2FC341F9E414F000145B7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				99A2FC351F9E414F000145B7 /* ofxMacScreenRecorder.h */,
+				99A2FC361F9E414F000145B7 /* ofxMacScreenRecorder.mm */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		99D571E41F5ED14F00EEEA43 /* ofxGui */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +225,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				99A2FC211F9E414E000145B7 /* ofxMacScreenRecorder */,
 				99D571E41F5ED14F00EEEA43 /* ofxGui */,
 			);
 			name = addons;
@@ -210,7 +301,7 @@
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0830;
 			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "particles" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -227,6 +318,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 99A2FC2C1F9E414E000145B7 /* Products */;
+					ProjectRef = 99A2FC2B1F9E414E000145B7 /* ofxMacScreenRecorderExample.xcodeproj */;
+				},
+				{
 					ProductGroup = E4328144138ABC890047C5CB /* Products */;
 					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
 				},
@@ -239,6 +334,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		99A2FC391F9E414F000145B7 /* ofxMacScreenRecorderExampleDebug.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ofxMacScreenRecorderExampleDebug.app;
+			remoteRef = 99A2FC381F9E414F000145B7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -269,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A2FC3B1F9E425E000145B7 /* ofxMacScreenRecorder.mm in Sources */,
 				99D571FE1F5ED14F00EEEA43 /* ofxToggle.cpp in Sources */,
 				99D571FD1F5ED14F00EEEA43 /* ofxSliderGroup.cpp in Sources */,
 				99D571F71F5ED14F00EEEA43 /* ofxBaseGui.cpp in Sources */,
@@ -298,19 +401,36 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -331,20 +451,36 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VALUE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = (
@@ -383,6 +519,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.openFrameworks.ofapp;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -410,6 +547,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.openFrameworks.ofapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;

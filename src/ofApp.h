@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "demoParticle.h"
 #include "ofxGui.h"
+#include "ofxMacScreenRecorder.h"
 
 
 class ofApp : public ofBaseApp{
@@ -63,6 +64,8 @@ class ofApp : public ofBaseApp{
         int nBandsToGet;
         float * fftSmoothed;
         void setBeatColor(float & color);
+    
+        ofxMacScreenRecorder recorder;
         
 		
 };

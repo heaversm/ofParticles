@@ -42,6 +42,11 @@ void ofApp::setup(){
     for (int i = 0; i < 8192; i++){
         fftSmoothed[i] = 0;
     }
+    
+    ofxMacScreenRecorderSetting setting;
+    setting.recordingArea.set(0, 0, 1024, 768);
+    setting.frameRate = 60.0f;
+    recorder.setup(setting);
 
     
 	resetParticles();
@@ -394,6 +399,14 @@ void ofApp::keyPressed(int key){
             beats.stop();
         } else {
             beats.play();
+        }
+    }
+    
+    if (key == 'z'){
+        if(recorder.isRecordingNow()){
+            recorder.stop();
+        } else {
+            recorder.start(ofToDataPath("test"));
         }
     }
     
